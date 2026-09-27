@@ -2,23 +2,28 @@ import os
 import json
 import base64
 from cryptography.hazmat.primitives.asymmetric import padding
+from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey, RSAPublicKey
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KEYS_DIR = os.path.join(BASE_DIR, "keys")
 
-def load_private_key(person_name):
+def load_private_key(person_name: str) -> RSAPrivateKey:
     path = os.path.join(KEYS_DIR, f"{person_name}_private.pem")
     with open(path, "rb") as f:
-        return serialization.load_pem_private_key(f.read(), password=None)
+        key = serialization.load_pem_private_key(f.read(), password=None)
+        assert isinstance(key, RSAPrivateKey)
+        return key
 
-def load_public_key(person_name):
+def load_public_key(person_name: str) -> RSAPublicKey:
     path = os.path.join(KEYS_DIR, f"{person_name}_public.pem")
     with open(path, "rb") as f:
-        return serialization.load_pem_public_key(f.read())
+        key = serialization.load_pem_public_key(f.read())
+        assert isinstance(key, RSAPublicKey)
+        return key
 
-def decrypt_and_verify(sender_name="alice", recipient_name="bob"):
+def decrypt_and_verify(sender_name: str = "alice", recipient_name: str = "bob"):
     # 1. Load Payload File
     payload_path = os.path.join(BASE_DIR, "encrypted_payload.json")
     if not os.path.exists(payload_path):
