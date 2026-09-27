@@ -1,0 +1,12 @@
+# Keys directory (Do not commit private keys)
+keys/*
+!keys/.gitkeep
+
+# Environment & Cache
+__pycache__/
+*.pyc
+venv/
+.vscode/
+
+# Output/Payload files
+encrypted_payload.json
