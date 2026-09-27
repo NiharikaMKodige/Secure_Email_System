@@ -2,7 +2,6 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
 ![Cryptography](https://img.shields.io/badge/library-pyca%2Fcryptography-green.svg)
-![Course](https://img.shields.io/badge/Course-BCS703%20Cryptography%20%26%20Network%20Security-orange.svg)
 
 An enterprise-grade hybrid cryptographic email communication model implemented in Python. Designed to protect email messages from **interception**, **spoofing**, and **unauthorized modification**.
 
