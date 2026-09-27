@@ -1,4 +1,4 @@
-# Secure Email Communication System (BCS703 Case Study)
+# Secure Email Communication System 
 
 ![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
 ![Cryptography](https://img.shields.io/badge/library-pyca%2Fcryptography-green.svg)
